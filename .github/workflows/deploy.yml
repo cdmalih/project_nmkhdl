@@ -1,0 +1,28 @@
+name: Deploy Flask App
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          python -m venv env
+          source env/bin/activate
+          pip install -r requirements.txt
+      - name: Run tests
+        run: pytest
+      - name: Start Flask App
+        run: |
+          source env/bin/activate
+          export FLASK_APP=app.py
+          flask run --host=0.0.0.0
