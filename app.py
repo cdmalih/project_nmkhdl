@@ -16,7 +16,7 @@ def load_model(path , way = 1):
     return model
 
 # print(model1 , model)
-path = "D:/Data Scientist/NMKHDL Project/Project_Predict_RealEstate/model.pkl" 
+path = "model.pkl" 
 model= load_model(path  , 1)
 
 
