@@ -1,3 +1,5 @@
 numpy
 pandas
 bs4
+scikit-learn
+flask
