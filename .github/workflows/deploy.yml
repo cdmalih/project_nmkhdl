@@ -24,4 +24,4 @@ jobs:
         run: |
           source env/bin/activate
           export FLASK_APP=app.py
-          python FLASK_APP run --host=0.0.0.0
+          python https://github.com/cdmalih/project_nmkhdl/blob/master/app.py run --host=0.0.0.0
