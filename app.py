@@ -44,8 +44,12 @@ def predict():
     return render_template('predict.html' , prediction_text = f"~{output:.1f}")
 
 
-
-
-if __name__ == "__main__":
+@app.cli.command()
+def main():
     app.run(debug= True)
+
+
+
+# if __name__ == "__main__":
+#     app.run(debug= True)
 # print(model)
