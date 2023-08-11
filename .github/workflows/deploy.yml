@@ -23,16 +23,24 @@ jobs:
 
     - name: Install dependencies
       run: |
-        python -m venv env
-        source env/bin/activate
+        python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install pytest
-
-
-
-    - name: Start Flask App
-      env:
-        FLASK_APP: app.py
+    
+    - name: Build and deploy
       run: |
-        source env/bin/activate
-        flask run --host=0.0.0.0
+        flask build
+        cp -R static $GITHUB_WORKSPACE
+        cp -R templates $GITHUB_WORKSPACE
+        cp app.py $GITHUB_WORKSPACE
+        cp requirements.txt $GITHUB_WORKSPACE
+    
+    - name: Configure Git
+      run: |
+        git config --global user.name $NAME_USER
+    
+    - name: Deploy to GitHub Pages
+      run: |
+        git checkout -b gh-pages
+        git add .
+        git commit -m "Deploy"
+        git push --force --set-upstream origin gh-pages
