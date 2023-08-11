@@ -29,14 +29,14 @@ jobs:
     - name: Build and deploy
       run: |
         flask build
-        cp -R static $GITHUB_WORKSPACE
-        cp -R templates $GITHUB_WORKSPACE
+        cp static $GITHUB_WORKSPACE
+        cp templates $GITHUB_WORKSPACE
         cp app.py $GITHUB_WORKSPACE
         cp requirements.txt $GITHUB_WORKSPACE
     
     - name: Configure Git
       run: |
-        git config --global user.name $NAME_USER
+        git config --global user.name "cdmalih"
     
     - name: Deploy to GitHub Pages
       run: |
