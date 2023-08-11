@@ -28,7 +28,7 @@ jobs:
     
     - name: Build and deploy
       run: |
-        flask build
+        flask main
         cp static $GITHUB_WORKSPACE
         cp templates $GITHUB_WORKSPACE
         cp app.py $GITHUB_WORKSPACE
